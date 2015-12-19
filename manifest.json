@@ -1,0 +1,13 @@
+{
+	"manifest_version": 2,
+	"name": "Reddbook",
+	"version": "0.1",
+	"description": "Replace your Facebook feed with Reddit!",
+	"content_scripts": [
+		{
+			"matches": ["https://www.facebook.com/*", "http://www.facebook.com/*"],
+			"js": ["replace.js"],
+			"run_at": "document_idle"
+		}
+	]
+}
