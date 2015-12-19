@@ -104,11 +104,9 @@ setTimeout(function() {
 	    var content = document.createElement("div");
 	    content.className = "_5pbx userContent";
 
-	    var content = document.createElement("div");
-	    content.className = "_5pbx userContent";
 	    var contentString = post.selftext_html;
 	    if(contentString != null) {
-	    content.innerHTML = htmlDecode(contentString);
+		content.innerHTML = htmlDecode(contentString);
 	    }
 
 
