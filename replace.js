@@ -129,7 +129,7 @@ setTimeout(function() {
 	    margin.appendChild(header);
 
 
-	    //Content
+	    //Content Text
 	    var content = document.createElement("div");
 	    content.className = "_5pbx userContent";
 
@@ -139,6 +139,43 @@ setTimeout(function() {
 	    }
 
 	    margin.appendChild(content);
+
+
+	    //Content Media
+	    if(post.preview != null && post.preview.images != null) {
+		var imageWrapper = document.createElement("div");
+		imageWrapper.className = "_3x-2";
+		
+		var imageData = document.createElement("div");
+		
+		var imageSubWrapper = document.createElement("div");
+		imageSubWrapper.className = "mtm";
+		
+		var imageSubSubWrapper = document.createElement("div");
+		imageSubSubWrapper.className = "_5cq3";
+
+		var imageLink = document.createElement("a");
+		imageLink.className = "_4-eo _2t9n";
+		imageLink.setAttribute("href", post.url);
+		//TODO: imageLink.setAttribute("style", "width:470px");
+		
+		var scaledImageContainer = document.createElement("div");
+		scaledImageContainer.className = "uiScaledImageContainer _4-ep";
+		//TODO: scaledImageContainer.setAttribute("style", "width:470px;height:312px")
+		var actualImage = document.createElement("img");
+		actualImage.className = "scaledImageFitWidth img";
+		actualImage.setAttribute("src", post.preview.images[0].source.url);
+		//TODO: actualImage.setAttribute("height", "");
+		//TODO: actualImage.setAttribute("width", "");
+
+		scaledImageContainer.appendChild(actualImage);
+		imageLink.appendChild(scaledImageContainer);
+		imageSubSubWrapper.appendChild(imageLink);
+		imageSubWrapper.appendChild(imageSubSubWrapper);
+		imageData.appendChild(imageSubWrapper);
+		imageWrapper.appendChild(imageData);
+		margin.appendChild(imageWrapper);
+	    }
 
 
 	    //Other stuff
