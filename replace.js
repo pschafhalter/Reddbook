@@ -144,6 +144,62 @@ function makeMedia(post) {
 }
 
 
+function makeLikeCommentShareBar(post) {
+    var container = document.createElement("div");
+    container.className = "_37uu";
+    
+    var subContainer = document.createElement("div");
+    subContainer.className = "_3399 _a7s";
+
+    var subSubContainer = document.createElement("div");
+    subSubContainer.className = "_524d";
+
+    var subSubSubContainer = document.createElement("div");
+    subSubSubContainer.className = "_42nr";
+
+    var likeContainer = document.createElement("span");
+    var likeButton = document.createElement("a");
+    likeButton.className = "_48-k UFILikeLink";
+    var likeText = document.createTextNode("Like");
+
+    likeButton.appendChild(likeText);
+    likeContainer.appendChild(likeButton);
+    subSubSubContainer.appendChild(likeContainer);
+
+    var commentContainer = document.createElement("span");
+    var commentButton = document.createElement("a");
+    commentButton.className = "comment_link _5yxe";
+    commentButton.setAttribute("href", "https://www.reddit.com" + post.permalink);
+    var commentText = document.createTextNode("Comment");
+
+    commentButton.appendChild(commentText);
+    commentContainer.appendChild(commentButton);
+    subSubSubContainer.appendChild(commentContainer);
+
+    var shareContainer = document.createElement("span");
+    var shareButton = document.createElement("a");
+    var shareRoot = document.createElement("span");
+    shareRoot.className = "share_root";
+    var shareLink = document.createElement("a");
+    shareLink.className = "share_action_link _5f9b";
+    var shareSpan = document.createElement("span");
+    var shareText = document.createTextNode("Share");
+
+    shareSpan.appendChild(shareText);
+    shareLink.appendChild(shareSpan);
+    shareRoot.appendChild(shareLink);
+    shareButton.appendChild(shareRoot);
+    shareContainer.appendChild(shareButton);
+    subSubSubContainer.appendChild(shareContainer);
+
+    subSubContainer.appendChild(subSubSubContainer);
+    subContainer.appendChild(subSubContainer);
+    container.appendChild(subContainer);
+
+    return container;
+}
+
+
 function makeRest(post) {
     var otherStuffContainer = document.createElement("div");
     var stuffForm = document.createElement("form");
@@ -151,8 +207,10 @@ function makeRest(post) {
 
     var likeCommentShare = document.createElement("div");
     likeCommentShare.className = "_57w _5vsi";
-    likeCommentShare.innerHTML = '<div class="_37uu"><div class="_3399 _a7s"><div class="_524d"><div class="_42nr"><span><a data-ft="{&quot;tn&quot;:&quot;>&quot;}" aria-live="polite" aria-label="Like this" role="button" href="#" data-testid="fb-ufi-likelink" class="_48-k UFILikeLink" data-reactroot="">Like</a></span><span><a data-ft="{ &quot;tn&quot;: &quot;S&quot;, &quot;type&quot;: 24 }" title="Leave a comment" href="#" role="button" class="comment_link _5yxe" data-reactroot="">Comment</a></span><span data-ft="{&quot;tn&quot;:&quot;J&quot;,&quot;type&quot;:25}"><span class="share_root"><a title="Send this to friends or post it on your timeline." data-ft="{ &quot;tn&quot;: &quot;J&quot;, &quot;type&quot;: 25 }" class="share_action_link _5f9b" href="#" data-reactroot=""><span>Share</span><span aria-busy="true" aria-label="Loading..." class="UFIShareLinkSpinner _1wfk img _55ym _55yn _55yo _5tqs _5d9-"></span></a></span></span></div></div></div></div>';
+    //likeCommentShare.innerHTML = '<div class="_37uu"><div class="_3399 _a7s"><div class="_524d"><div class="_42nr"><span><a data-ft="{&quot;tn&quot;:&quot;>&quot;}" aria-live="polite" aria-label="Like this" role="button" href="#" data-testid="fb-ufi-likelink" class="_48-k UFILikeLink" data-reactroot="">Like</a></span><span><a data-ft="{ &quot;tn&quot;: &quot;S&quot;, &quot;type&quot;: 24 }" title="Leave a comment" href="#" role="button" class="comment_link _5yxe" data-reactroot="">Comment</a></span><span data-ft="{&quot;tn&quot;:&quot;J&quot;,&quot;type&quot;:25}"><span class="share_root"><a title="Send this to friends or post it on your timeline." data-ft="{ &quot;tn&quot;: &quot;J&quot;, &quot;type&quot;: 25 }" class="share_action_link _5f9b" href="#" data-reactroot=""><span>Share</span><span aria-busy="true" aria-label="Loading..." class="UFIShareLinkSpinner _1wfk img _55ym _55yn _55yo _5tqs _5d9-"></span></a></span></span></div></div></div></div>';
 
+    var likeCommentShareBar = makeLikeCommentShareBar(post);
+    likeCommentShare.appendChild(likeCommentShareBar);
     stuffForm.appendChild(likeCommentShare);
 
     var likesCommentsContainer = document.createElement("div");
